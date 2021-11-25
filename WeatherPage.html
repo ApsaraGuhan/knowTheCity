@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Weather Report </title>
+</head>
+<style>
+    
+    .bg{
+        background-color: #B7F0F0;
+    }
+    .div-1 {
+        background-color: #10B3B3;
+        width: 1500px;
+        height: 125px;
+
+    }
+    .title{
+        color:#FFFFFF;
+        position:relative; 
+        left:500px;
+        top:30px;
+        font-size: 50px;
+        font-family:"Tahoma"  ;
+    }
+    .weather-icon{
+            position: relative;
+            width: 87px;
+            height: 89px;
+            left: 910px;
+            top:-80px;
+        }
+    .weather-div-2{
+        width:400px;
+        height: 400px;
+        position: relative;
+        left: 120px;
+        top:-90px;
+        z-index: 10;
+    }
+    .weather-div-3{
+        position: absolute;
+        width: 800px;
+        height: 727px;
+        left: 350px;
+        top: 250px;
+
+        background: #0FBABA;
+    }
+    .temperature{
+        position: absolute;
+        left: 280px;
+        top: 50px;
+        
+        }
+
+    .minimum{
+        position: absolute;
+        left: 80px;
+        top: 170px;
+        
+    }
+    .maximum{
+        position: absolute;
+        left: 470px;
+        top: 170px;
+    }
+    .description{
+        position: absolute;
+        left: 280px;
+        top: 300px;
+        
+        
+    }
+    .weather-det-text{
+        font-size: 24px; 
+        color: #FFFFFF; 
+        font-weight: bold;
+        font-family:"Tahoma"  ;
+    }
+    .weather-det-val-text{
+        font-size: 22px; 
+        color: #FFFFFF; 
+        font-family:"Tahoma"  ;
+    }
+    .pressure{
+
+        position: absolute;
+        left: 80px;
+        top: 420px;
+
+    }
+    .humidity{
+        position: absolute;
+        left: 470px;
+        top: 420px;
+    }
+    .windspeed{
+
+        position: absolute;
+        left: 280px;
+        top: 520px;
+
+    }
+    .bottomimage{
+        position: absolute;
+        left: 950px;
+        top: 780px;
+    }
+    .table1{
+
+        border-spacing:18px 17px;
+
+    }
+        td {
+    text-align: center;
+    }
+
+</style>
+<body class="bg" onload="myFunction()">
+    <div class="div-1">
+        <h1 class="title">Weather Report</h1>
+        <img class="weather-icon" src="/static/icons8-partly-cloudy-day-50.png" >
+    </div>
+    <div class="weather-div-2">
+        <img src="/static/3213389.png" width="340px" height="340px" >
+    </div>
+    <div class="weather-div-3">
+
+        <table class="temperature">
+            <tr>
+                <td><img src="/static/tempicon.png" width="50px" height="50px"></td>
+                <td class="weather-det-text">Temperature</td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="temp">35C</td>
+            </tr>
+        </table>
+        <table class="minimum">
+            <tr>
+                <td><img src="/static/icons8-winter-50.png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Min. Temperature</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="mintemp">18C</td>
+            </tr>
+
+        </table>
+        <table class="maximum">
+            <tr>
+                <td><img src="/static/icons8-sun-50.png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Max. Temperature</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="maxtemp">37C</td>
+            </tr>
+
+        </table>
+        <table class="description">
+            <tr>
+                
+                <td><img src="/static/icons8-notepad-30 (1).png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="desc">Haze</td>
+            </tr>
+        </table>
+
+        <table class="pressure">
+            <tr>
+                
+                <td><img src="/static/icons8-atmospheric-pressure-30.png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Pressure</td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="pressure">15</td>
+            </tr>
+        </table>
+
+        <table class="humidity">
+            <tr>
+                
+                <td><img src="/static/icons8-humidity-30.png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Humidity</td>
+                
+            </tr>
+        
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="humidity">16</td>
+            </tr>
+            <tr>
+                
+        </table>
+        <table class="windspeed">    
+                <td><img src="/static/icons8-wind-30.png" width="40px" height="40px"></td>
+                <td class="weather-det-text">Wind Speed</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="weather-det-val-text" id="windsp">20</td>
+            </tr>
+        </table>
+
+        <script>
+            function myFunction() {
+                var city = '{{cityname}}'
+                var link = "/ws/WeatherReport/"
+                var url = link.concat(city)
+                fetch(url).then(function(res) {
+                    return res.json()
+                }).then(function(json) {
+                    if (Object.keys(json).length == 0){
+                            console.log("hello");
+                            var link = "http://127.0.0.1:5000";
+                            window.location.href=link;
+                        }
+                    else{
+                    document.getElementById('temp').innerHTML = json.temp
+                    document.getElementById('mintemp').innerHTML = json.temp_min
+                    document.getElementById('maxtemp').innerHTML = json.temp_max
+                    document.getElementById('desc').innerHTML = json.description
+                    document.getElementById('pressure').innerHTML = json.pressure
+                    document.getElementById('humidity').innerHTML = json.humidity
+                    document.getElementById('windsp').innerHTML = json.windspeed}
+                }).catch(function(err) {
+                    console.log(err.message)
+                })
+            }
+        </script>
+    </div>
+    <div class="bottomimage">
+        <img src="/static/1154075.png" width="256px" height="256px">
+    </div>
+    
+</body>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Covid Info </title>
+</head>
+<style>
+    .div-1 {
+        background-color: #45837B;
+        width: 1500px;
+        height: 125px;
+        background: #CF252F;
+
+
+    }
+    .div-2{
+        position:absolute; 
+        left:70px;
+        top:140px;
+        width:250px;
+        height:300px; 
+        color: #45837B;
+        
+        
+    }
+    .div-3{
+        position:absolute; 
+        left:400px;
+        top:250px; 
+        width : 600px;
+        height : 250px;
+        background: #ED6868;
+    }
+    .div-4{
+        position:absolute; 
+        left:250px;
+        top: 530px;
+        width: 1000px;
+        height: 2000px;
+        background: #B6E4CE;
+
+    }
+    .div-5
+    {
+        position:absolute;
+        left:400px;
+        top: 0px;
+        width:250px;
+        height:200px;
+        
+
+    }
+    .div-6
+    {
+        position:absolute;
+        left: 1000px;
+        top: 300px;
+        width:200px;
+        height:180px;   
+    }
+    .div-7
+    {
+        position:absolute;
+        left:130px;
+        top: 450px;
+        width:200px;
+        height:150px;   
+    }
+    .bg{
+        background-color: #F0EFED;
+        
+        height: auto;
+    }
+    .title{
+        color:#FFFFFF;
+        position:relative; 
+        left:600px;
+        top:30px;
+        font-size: 50px;
+        font-family:"Tahoma"  ;
+    }
+    .input-text{
+        width: 215px;
+        height: 36px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: hidden;
+        background: #C5DFDA;
+        font-size: 30px;
+        font-family:"Tahoma"  ;
+
+    }
+    .enter-text{
+        font-family: "Tahoma";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 45px;
+
+        color: #45837B;
+
+    }
+    .covid-det-text{
+        font-size: 24px; 
+        color: #FFFFFF; 
+        font-weight: bold;
+        font-family:"Tahoma"  ;
+    }
+    .covid-det-val-text{
+        font-size: 20px; 
+        color: #FFFFFF; 
+        font-family:"Tahoma"  ;
+    }
+    .instruction-det-text{
+        font-size: 24px; 
+        color: #15774E; 
+        font-weight: bold;
+        font-family:"Tahoma"  ;
+    }
+    .instruction-det-val-text{
+        font-size: 24px; 
+        color: #15774E; 
+        font-family:"Tahoma"  ;
+    }
+    .table1
+    {
+        position: relative;
+        left:150px;
+        border-spacing:10px 17px;
+    }
+    .table2
+    {
+        position: absolute;
+        left:50px;
+        top:70px;
+    }
+    .table3
+    {
+        position: absolute;
+        left:400px;
+        top:70px;
+    }
+    .table4{
+        position:relative;
+        left:0px;
+    }
+    table, th, td {
+  
+  padding: 5px;
+}
+    
+    
+</style>
+<body class="bg" onload="myFunction()">
+    <div class="div-1"><centre><h1 class="title">COVID Info</h1></centre>
+        <div class="div-5"><img src="/static/virus.png"  width="100%" height="100%"/></div>
+    </div>
+
+    <div class="div-3">
+        <table class="table1">
+            <tr>
+                <td class="covid-det-text">Confirmed</td>
+                <td class="covid-det-val-text" id="confirmed"></td>
+            </tr>
+        </table>
+        <table class="table2">
+            <tr>
+                
+                <td class="covid-det-text">No of deaths</td>
+                <td class="covid-det-val-text" id="death"></td>
+                
+                
+            </tr>
+        </table>
+        <table class="table3">
+            <tr>
+                <td class="covid-det-text">Level</td>
+                <td class="covid-det-val-text" id="level"></td>
+            </tr>
+
+        </table>
+        
+            <table class="table1" style="position:absolute; top:100px;"> 
+            <tr>
+
+                 
+                <td class="covid-det-text">Rate</td>
+                <td class="covid-det-val-text" id="rate"></td>
+            </tr>
+            
+        
+            <tr>
+                
+                <td class="covid-det-text">% Vaccinated</td>
+                <td class="covid-det-val-text" id="percentagevaccinated"></td>
+            </tr>
+        </table>
+
+    </div>
+    
+    <div class="div-4">
+        <br><br>
+        <table class="table4">
+            <tr>
+                <td class="instruction-det-text">City</td>
+                <td class="instruction-det-val-text" id="cityname"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">Instruction</td>
+                <td class="instruction-det-val-text" id="instruction"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">Testing Required</td>
+                <td class="instruction-det-val-text" id="testingrequired"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">When</td>
+                <td class="instruction-det-val-text" id="when"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">Tracing application</td>
+                <td class="instruction-det-val-text" id="tracingapplication"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">Safety requirement</td>
+                <td class="instruction-det-val-text" id="safetyrequirement"></td>
+            </tr>
+            <tr>
+                
+                <td class="instruction-det-text">Exit</td>
+                <td class="instruction-det-val-text" id="exit"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="div-6"><img src="/static/vaccine.png"  width="100%" height="100%"/></div>
+    <div class="div-7"><img src="/static/covid.png"  width="100%" height="100%"/></div>
+    
+    <script>
+        function myFunction() {
+        var city = '{{cityname}}'
+        var link = "/ws/CovidInfo/"
+        var url = link.concat(city)
+        fetch(url).then(function(res) {
+            return res.json()
+        }).then(function(json) {
+            console.log(json)
+            if (Object.keys(json).length == 0){
+                console.log("hello");
+                console.log(json)
+                var link = "http://127.0.0.1:5000/KnowTheCity/NoInfo";
+                window.location.href=link;
+            }
+            else{
+            console.log("inside else")
+            document.getElementById('confirmed').innerHTML = json.confirmed
+            document.getElementById('death').innerHTML = json.deaths
+            document.getElementById('level').innerHTML = json.level
+            document.getElementById('rate').innerHTML = json.rate
+            document.getElementById('percentagevaccinated').innerHTML = json.Vaccinated
+            document.getElementById('cityname').innerHTML = city
+            document.getElementById('instruction').innerHTML = json.Instruction
+            document.getElementById('testingrequired').innerHTML = json.testingRequestion
+            document.getElementById('tracingapplication').innerHTML = json.Tracing_application
+            document.getElementById('safetyrequirement').innerHTML = json.Mask
+            document.getElementById('exit').innerHTML = json.Exit}
+        }).catch(function(err) {
+            console.log(err.message)
+        })
+    }
+    </script>
+    
+
+</body>

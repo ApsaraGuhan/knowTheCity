@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Country Details </title>
+</head>
+<style>
+    .bg{
+        background-color: #EDF6FB;;
+    }
+    .div-1 {
+        background-color: #44A6DD;
+        width: 1500px;
+        height: 125px;
+
+    }
+    .title{
+        color:#FFFFFF;
+        position:relative; 
+        left:500px;
+        top:30px;
+        font-size: 50px;
+        font-family:"Tahoma"  ;
+    }
+    .country-icon{
+        position: relative;
+        width: 87px;
+        height: 89px;
+        left: 910px;
+        top:-80px;
+    }
+    .country-details{
+    position: absolute;
+    width: 2000px;
+    height: 200px;
+    left: 300px;
+    top: 200px;
+    }
+
+    .country-det-text{
+        font-size: 24px; 
+        color: #0B88CF; 
+        font-weight: bold;
+        font-family:"Tahoma"  ;
+    }
+    .country-det-val-text{
+        font-size: 24px; 
+        color: #0B88CF; 
+        font-family:"Tahoma"  ;
+    }
+    .table1{
+        border-spacing:18px 17px;
+
+    }
+    .country-image{
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        left: 950px;
+        top: 160px;
+    }
+    .emergency-image{
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        left: 300px;
+        top: 500px;
+    }
+    .electricity-image{
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        left: 850px;
+        top: 810px;
+    }
+    .contact-details{
+        position: absolute;
+        width: 400px;
+        height: 250px;
+        left: 750px;
+        top: 500px;
+        background: #C7E6F8;
+    }
+
+    .electricity-details{
+        position: absolute;
+        width: 400px;
+        height: 250px;
+        left: 350px;
+        top: 820px;
+        background: #C7E6F8;
+    }
+    
+</style>
+<body class="bg" onload="myFunction()">
+    <div class="div-1">
+        <h1 class="title">Country Details</h1>
+        <img class="country-icon" src="/static/globe-xxl.png" >
+    </div>
+    <div class="country-image">
+        <img src="/static/7457411.png" width="280px" height="200px">
+    </div>
+    <div class="country-details">
+    <table class="table1">
+        <tr>
+            <td><img style='vertical-align:middle' src='/static/icons8-flag-64.png' width="40px" height="40px"></td>
+            <td class="country-det-text">Country Name</td>
+            <td class="country-det-val-text" id="countryName"></td>
+        </tr>
+        <br>
+        <tr>
+            <td><img style='vertical-align:middle' src='/static/icons8-money-64.png' width="40px" height="40px"></td>
+            <td class="country-det-text">Currency Code</td>
+            <td class="country-det-val-text" id="currencyCode"></td>
+        </tr>
+        <tr>
+            <td><img style='vertical-align:middle' src='/static/icons8-language-64.png' width="40px" height="40px"></td>
+            <td class="country-det-text">Languages</td>
+            <td class="country-det-val-text" id="languages"></td>
+        </tr>
+        <tr>
+            <td><img style='vertical-align:middle' src='/static/icons8-call-64.png' width="40px" height="40px"></td>
+            <td class="country-det-text">Calling Code</td>
+            <td class="country-det-val-text" id="callingCode"></td>
+        </tr>
+    </table>
+    </div>
+    <div class="emergency-image">
+        <img src="/static/7457416.png" width="370px" height="270px">
+    </div>
+    <div class="contact-details">
+        <table class="table1">
+            <tr>
+            </tr>
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-policeman-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Police</td>
+                <td class="country-det-val-text" id="police">100</td>
+            </tr>
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-truck-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Fire</td>
+                <td class="country-det-val-text" id="fire">101</td>
+            </tr>
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-ambulance-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Ambulance</td>
+                <td class="country-det-val-text" id="ambulance">102</td>
+            </tr>
+        </table>
+    </div>
+    <div class="electricity-image">
+        <img src="/static/7457406.png" width="320px" height="200px">
+    </div>
+    <div class="electricity-details">
+
+        <table class="table1">
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-ambulance-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Voltage</td>
+                <td class="country-det-val-text" id="voltage">5</td>
+            </tr>
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-ambulance-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Frequency</td>
+                <td class="country-det-val-text" id="frequency">4hz</td>
+            </tr>
+            <tr>
+                <td><img style='vertical-align:middle' src='/static/icons8-ambulance-64.png' width="40px" height="40px"></td>
+                <td class="country-det-text">Plugs</td>
+                <td class="country-det-val-text" id="plugs">C</td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        
+        function myFunction() {
+        var city = '{{cityname}}'
+        var link = "/ws/CountryDetail/"
+        var url = link.concat(city)
+        fetch(url).then(function(res) {
+            return res.json()
+        }).then(function(json) {
+            document.getElementById('countryName').innerHTML = json.country
+            document.getElementById('currencyCode').innerHTML = json.currency_code
+            document.getElementById('languages').innerHTML = json.languages
+            document.getElementById('callingCode').innerHTML = json.calling_code
+            document.getElementById('police').innerHTML = json.police
+            document.getElementById('fire').innerHTML = json.fire
+            document.getElementById('ambulance').innerHTML = json.ambulance
+            document.getElementById('voltage').innerHTML = json.voltage
+            document.getElementById('frequency').innerHTML = json.frequency
+            document.getElementById('plugs').innerHTML = json.plugs
+        }).catch(function(err) {
+            console.log(err.message)
+        })
+    }
+    </script>
+</body>
+</html>

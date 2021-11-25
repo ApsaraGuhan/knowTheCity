@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> trial </title>
+</head>
+<style>
+    .div-1 {
+        background-color: #7C569A;
+        width: 1500px;
+        height: 125px;
+
+
+    }
+    .div-2{
+        position:absolute; 
+        left:70px;
+        top:140px;
+        width:250px;
+        height:300px; 
+        
+    }
+    .div-3{
+        position:absolute;left:250px;top:250px;width : 1100px;height : 550px;background: #E3D3EF;
+    }
+    .div-4{
+        position:absolute; 
+        left:1250px;
+        top:570px;
+        width: 250px;
+        height: 250px;
+
+    }
+    .div-5
+    {
+        position:absolute;left:1390px;top: 50px;width:110px;height:100px;
+        
+
+    }
+    .bg{
+        background-color: #F4EEF9;
+        
+        height: auto;
+    }
+    .title{
+        color:#FFFFFF;
+        position:relative; 
+        left:600px;
+        top:30px;
+        font-size: 50px;
+        font-family:"Tahoma"  ;
+    }
+    .input-text{
+        width: 215px;
+        height: 36px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: hidden;
+        background: #C5DFDA;
+        font-size: 30px;
+        font-family:"Tahoma"  ;
+
+    }
+    .enter-text{
+        font-family: "Tahoma";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 45px;
+
+        color: #45837B;
+
+        
+    }
+    .activities-det-text{
+        font-size: 24px; 
+        color: #7C569A; 
+        font-weight: bold;
+        font-family:"Tahoma"  ;
+    }
+    .activities-det-val-text{
+        font-size: 24px; 
+        color: #7C569A; 
+        font-family:"Tahoma"  ;
+    }
+    table, th, td {
+  
+  padding: 5px;
+}
+    
+    
+</style>
+<body onload="myFunction() ">
+    <div class="div-1"><centre><h1 class="title">Activities</h1></centre>
+        <div class="div-5"><img src="/static/person.png"  width="100%" height="100%"/></div>
+    </div>
+    <p id="box">
+
+    </p>
+    <script>
+        
+        function myFunction() {
+        var city = '{{cityname}}'
+        var link = "/ws/CityActivities/"
+        var url = link.concat(city)
+        for (i = 0; i < 2500; i++){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //do Something
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+        /*fetch(url).then(function(res) {
+            return res.json()
+        }).then(function(json) {
+            console.log(json)
+            if (Object.keys(json).length == 0){
+                console.log("hello");
+                var link = "http://127.0.0.1:5000/KnowTheCity/NoInfo";
+                window.location.href=link;
+            }
+            else{
+                console.log(json)
+                document.getElementById("type").innerHTML=json[1].Name;
+                var html = "<table border='1|1'>";
+                for (var i = 1; i < 6; i++) {
+                    html+="<tr>";
+                    html+="<td>"+json[i].Name+"</td>";
+                    html+="<td>"+json[i].Description+"</td>";
+                    html+="<td>"+json[i].Booking_link+"</td>";
+                    html+="<td>"+json[i].Amount+"</td>";
+                    
+                    html+="</tr>";
+                    console.log(json[i].Name);
+                    document.getElementById("type").innerHTML=json[i].Name;
+                }
+                html+="</table>";
+                document.getElementById("box").innerHTML = html;}
+        }).catch(function(err) {
+            console.log(err.message)
+        })*/
+    }
+    </script>
+    
+
+</body>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Home Page </title>
+</head>
+<style>
+    .div-1 {
+        background-color: #45837B;
+        width: 1500px;
+        height: 125px;
+
+    }
+    .div-2{
+        position:relative; 
+        left:650px;
+        top:50px; 
+    }
+    .div-3{
+        position:relative; 
+        left:400px;
+        top:100px; 
+        width : 1100px;
+        height : 250px;
+    }
+    .div-4{
+        position:relative; 
+        left:870px;
+        top:13px;
+        width: 34px;
+        height: 36px;
+        background: #45837B;
+    }
+    .div-5{
+        position:absolute;
+        left:550px;
+        top:400px;
+    }
+    .bg{
+        background-color: #F0EFED;
+    }
+    .title{
+        color:#FFFFFF;
+        position:relative; 
+        left:600px;
+        top:30px;
+        font-size: 50px;
+        font-family:"Tahoma"  ;
+    }
+    .input-text{
+        width: 215px;
+        height: 36px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: hidden;
+        background: #C5DFDA;
+        font-size: 30px;
+        font-family:"Tahoma"  ;
+
+    }
+    .enter-text{
+        font-family: "Tahoma";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 45px;
+
+        color: #45837B;
+    }
+    .button-style{
+
+        background-color: #45837B; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family: "Tahoma";
+
+    }
+    
+    
+    
+</style>
+<body class="bg">
+    <div class="div-1"><centre><h1 class="title">Know the city</h1></centre></div>
+    <div class="div-2"> <centre><h2 class="enter-text"> Enter the city</h2>
+    <input type="text" class="input-text" id="cityname"></centre> </div>
+    <div class="div-4"><input type="image" style="width: 34px;
+        height: 36px;" src="/static/searchbutton.jpg" name="submit" alt="submit" onClick="myFunction()"/>  
+    </div>
+    <script>
+        function myFunction() {
+    window.location.href="C:/Users/AISHWARYA/Documents/countryPage.html";
+  }
+  function func_countryDet(){
+        var city = document.getElementById("cityname").value;
+        var link = "http://127.0.0.1:5000/KnowTheCity/CountryDetails/";
+        var url = link.concat(city)
+        window.location.href=url;
+    }
+
+    function func_weatherReport(){
+        var city = document.getElementById("cityname").value;
+        var link = "http://127.0.0.1:5000/KnowTheCity/WeatherReport/"
+        var url = link.concat(city)
+        window.location.href=url;
+    }
+
+    function func_activities(){
+        var city = document.getElementById("cityname").value;
+        var link = "http://127.0.0.1:5000/KnowTheCity/CityActivities/"
+        var url = link.concat(city)
+        window.location.href=url;
+    }
+
+    function func_covidinfo(){
+        var city = document.getElementById("cityname").value;
+        var link = "http://127.0.0.1:5000/KnowTheCity/CovidInfo/"
+        var url = link.concat(city)
+        window.location.href=url;
+    }
+    </script>
+    <div class = "div-5">
+        <centre>
+        <button class="button-style" onclick="func_weatherReport()">Weather</button>
+        <button class="button-style" onclick="func_covidinfo()">CovidInfo</button>
+        <button class="button-style" onclick="func_activities()">Activities</button>
+        <button class="button-style" onclick="func_countryDet()">General</button>
+    </centre>
+    </div>
+    <div class="div-3"><img src="/static/silhouette-skyline-illustration_53876-78786.jpg"  width="70%" height="100%"/></div>
+
+</body>

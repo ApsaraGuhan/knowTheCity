@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> City Activities </title>
+</head>
+<style>
+    .bg{
+        background-color: #F4EEF9;
+        
+        height: auto;
+    }
+    td {
+  padding: 15px;
+  text-align: left;
+  color:#7C569A;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+th{
+  padding: 15px;
+  text-align: left;
+  color:#7C569A;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {background-color: #D3B0EF;}
+tr:hover {background-color: white;}
+</style>
+<body class="bg" onload="myFunction()">
+    <p id="box">
+
+    </p>
+    <script>
+        
+        function myFunction() {
+        var city = '{{cityname}}'
+        var link = "/ws/CityActivities/"
+        var url = link.concat(city)
+        for (i = 0; i < 10; i++){
+            fetch(url).then(function(res) {
+            return res.json()
+        }).then(function(json) {
+            if (Object.keys(json).length == 0){
+                console.log("hello");
+                var link = "http://127.0.0.1:5000/KnowTheCity/NoInfo";
+                window.location.href=link;
+            }
+            else{
+            console.log(json)
+            var html = "<div style='background-color: #7C569A;width: 1500px;height: 125px;'><centre><h1 style='color:#FFFFFF;position:relative; left:600px;top:30px;font-size: 50px;font-family:'Tahoma'  ;'>Activities</h1></centre><div style='position:absolute;left:1390px;top: 50px;width:110px;height:100px;'><img src='/static/person.png'  width='100%' height='100%'/></div></div><div style = 'position:absolute;left:200px;top:250px;width : 1100px;height : 550px;'><table style='border: 5px groove #7C569A;'><th>Name</th><th>Description</th><th>Booking Link</th><th>Price</th>";
+            for (var i = 1; i < 6; i++) {
+                html+="<tr>";
+                html+="<td>"+json[i].Name+"</td>";
+                html+="<td>"+json[i].Description+"</td>";
+                html+="<td>"+json[i].Booking_link+"</td>";
+                html+="<td>"+json[i].Amount+"</td>";
+                
+                html+="</tr>";
+            }
+            html+="</table></div>";
+            document.getElementById("box").innerHTML = html;}
+        }).catch(function(err) {
+            console.log(err.message)
+
+        })
+        
+}
+/*
+        fetch(url).then(function(res) {
+            return res.json()
+        }).then(function(json) {
+            if (Object.keys(json).length == 0){
+                console.log("hello");
+                var link = "http://127.0.0.1:5000/KnowTheCity/NoInfo";
+                window.location.href=link;
+            }
+            else{
+            console.log(json)
+            var html = "<div style='background-color: #7C569A;width: 1500px;height: 125px;'><centre><h1 style='color:#FFFFFF;position:relative; left:600px;top:30px;font-size: 50px;font-family:'Tahoma'  ;'>Activities</h1></centre><div style='position:absolute;left:1390px;top: 50px;width:110px;height:100px;'><img src='/static/person.png'  width='100%' height='100%'/></div></div><div style = 'position:absolute;left:200px;top:250px;width : 1100px;height : 550px;'><table style='border: 5px groove #7C569A;'><th>Name</th><th>Description</th><th>Booking Link</th><th>Price</th>";
+            for (var i = 1; i < 6; i++) {
+                html+="<tr>";
+                html+="<td>"+json[i].Name+"</td>";
+                html+="<td>"+json[i].Description+"</td>";
+                html+="<td>"+json[i].Booking_link+"</td>";
+                html+="<td>"+json[i].Amount+"</td>";
+                
+                html+="</tr>";
+            }
+            html+="</table></div>";
+            document.getElementById("box").innerHTML = html;}
+        }).catch(function(err) {
+            console.log(err.message)
+        })*/
+    }
+    </script>
+</body>
